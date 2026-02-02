@@ -1,0 +1,12 @@
+node_modules/
+*/node_modules/
+.venv/
+.env
+.env.*
+backend/prisma/dev.db
+backend/dist/
+app/.expo/
+*.log
+expo-debug.log
+*.tmp
+*.swp

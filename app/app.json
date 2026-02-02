@@ -1,0 +1,29 @@
+{
+  "expo": {
+    "name": "Bahía Go",
+    "slug": "bahia-go",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#FFFFFF"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#121212"
+      }
+    },
+    "web": {},
+    "plugins": [
+      "expo-router"
+    ],
+    "scheme": "bahia-go"
+  }
+}
