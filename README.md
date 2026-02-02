@@ -96,4 +96,34 @@ EXPO_PUBLIC_API_BASE_URL=http://<tu-ip-lan>:8081
 │   │   └── ...
 │   └── ...
 └── README.md
+
+## Deployment
+
+### Backend
+
+1. Choose a hosting platform (Railway, Render, Heroku, etc.)
+2. Set environment variables in your hosting platform:
+   - `DATABASE_URL`: Your database URL (for production, use PostgreSQL)
+   - `JWT_SECRET`: A secure random string
+   - `EMAIL_USER` and `EMAIL_PASS`: For OTP emails
+   - `PORT`: Usually set by the platform
+   - `ADMIN_EMAILS`: Comma-separated admin emails
+   - `WOMPI_PUBLIC_KEY`, `WOMPI_WEBHOOK_SECRET`: For payments
+3. Deploy the backend code
+4. Run `npx prisma migrate deploy` to apply migrations
+5. Run `npx prisma db seed` to seed data (optional)
+
+### Frontend
+
+1. Use Expo Application Services (EAS) for building
+2. Configure `EXPO_PUBLIC_API_BASE_URL` to your deployed backend URL
+3. Build and submit to app stores using `eas build`
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
 ```
