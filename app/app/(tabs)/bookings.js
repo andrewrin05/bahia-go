@@ -39,6 +39,11 @@ export default function BookingsScreen() {
         setBookings([]);
       }
     } catch (error) {
+      if (error?.response?.status === 401) {
+        setIsLoggedIn(false);
+        setBookings([]);
+        return;
+      }
       console.error('Error fetching bookings:', error);
       Alert.alert('Error', 'No se pudieron cargar las reservas');
       setBookings([]);

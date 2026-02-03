@@ -1,8 +1,27 @@
 import { PrismaClient } from '@prisma/client';
+import * as bcrypt from 'bcrypt';
 
 const prisma = new PrismaClient();
 
 async function main() {
+  // Create a demo user with password for testing login
+  const demoEmail = 'demo@bahiago.com';
+  const demoPassword = 'Demo123!';
+  const existingUser = await prisma.user.findUnique({ where: { email: demoEmail } });
+  if (!existingUser) {
+    const hash = await bcrypt.hash(demoPassword, 10);
+    await prisma.user.create({
+      data: {
+        email: demoEmail,
+        passwordHash: hash,
+        role: 'ADMIN',
+      },
+    });
+    console.log(`Demo user created: ${demoEmail} / ${demoPassword}`);
+  } else {
+    console.log(`Demo user already exists: ${demoEmail}`);
+  }
+
   // Create sample boats
   const boats = [
     {

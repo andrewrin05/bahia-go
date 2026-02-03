@@ -109,6 +109,10 @@ export default function HomeScreen() {
       const list = Array.isArray(response?.data) ? response.data : [];
       setSavedSearches(list);
     } catch (error) {
+      if (error?.response?.status === 401) {
+        setSavedSearches([]);
+        return;
+      }
       console.warn('Error loading saved searches', error?.response?.data || error?.message);
     }
   };
@@ -119,6 +123,10 @@ export default function HomeScreen() {
       const ids = Array.isArray(response?.data) ? response.data.map((f) => f.boat?.id).filter(Boolean) : [];
       setFavoriteIds(ids);
     } catch (error) {
+      if (error?.response?.status === 401) {
+        setFavoriteIds([]);
+        return;
+      }
       console.warn('Error loading favorites', error?.response?.data || error?.message);
     }
   };
