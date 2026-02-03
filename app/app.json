@@ -4,26 +4,32 @@
     "slug": "bahia-go",
     "version": "1.0.0",
     "orientation": "portrait",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
+    "icon": "./assets/images/bahia-go-icon.png",
     "splash": {
+      "image": "./assets/images/bahia-go-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#FFFFFF"
+      "backgroundColor": "#0B0E14"
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.bahiago.app",
       "supportsTablet": true
     },
     "android": {
+      "package": "com.bahiago.app",
       "adaptiveIcon": {
-        "backgroundColor": "#121212"
+        "backgroundColor": "#0B0E14"
       }
     },
-    "web": {},
+    "web": {
+      "bundler": "metro"
+    },
     "plugins": [
       "expo-router"
     ],
-    "scheme": "bahia-go"
+    "scheme": "bahiago"
   }
 }
