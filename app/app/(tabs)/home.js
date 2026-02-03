@@ -11,7 +11,7 @@ import { useSettings } from '../../providers/SettingsProvider';
 
 export default function HomeScreen() {
   const insets = useSafeAreaInsets();
-  const { appearance, paperTheme } = useSettings();
+  const { appearance, paperTheme, language } = useSettings();
   const styles = useMemo(() => makeStyles(appearance, paperTheme), [appearance, paperTheme]);
   const [boats, setBoats] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -310,6 +310,19 @@ export default function HomeScreen() {
     const price = item.pricePerDay || item.price || 0;
     const isFavorite = favoriteIds.includes(item.id);
 
+    const typeLabels = {
+      speedboat: 'Lancha rápida',
+      yacht: 'Yate',
+      catamaran: 'Catamarán',
+      sailboat: 'Velero',
+      boat: 'Embarcación',
+    };
+    const typeKey = (item.type || '').toLowerCase();
+    const typeDisplay = typeLabels[typeKey] || item.type || 'Embarcación';
+    const capacity = item.capacity || 0;
+    const peopleLabel = capacity === 1 ? 'persona' : 'personas';
+    const capacityDisplay = `${capacity} ${peopleLabel}`;
+
     return (
       <Card style={styles.boatCard} onPress={() => router.push(`/listings/${item.id}`)}>
         <Card.Cover source={{ uri: thumb }} />
@@ -327,10 +340,10 @@ export default function HomeScreen() {
           <Text style={styles.boatPrice}>${price}/día</Text>
           <View style={styles.badgesRow}>
             <Chip style={styles.miniChip} icon="sail-boat">
-              {item.type || 'tipo'}
+              {typeDisplay}
             </Chip>
             <Chip style={styles.miniChip} icon="account-group">
-              {item.capacity || 0} pax
+              {capacityDisplay}
             </Chip>
           </View>
         </Card.Content>

@@ -381,3 +381,6 @@ export const useSettings = () => {
   }
   return ctx;
 };
+
+// Export default provider for Expo Router layout consumption
+export default AppSettingsProvider;
